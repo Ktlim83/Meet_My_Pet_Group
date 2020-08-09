@@ -1,0 +1,57 @@
+Topic:
+
+Pet based app.
+
+login/reg:
+profile section:
+first name last name
+email(user login)
+password
+
+
+profile info owner:
+profile pic
+type of pet
+pet age
+location
+
+
+
+Message board/:
+Posts messages and be commented on
+Post events:
+add a table of interest people
+
+
+
+
+backburner:
+api for meetups
+pet profile
+
+
+wireframe:
+
+1.log in page, registration redirect.
+
+2. registration
+
+3. messageboard with side bar profile link.
+   click on name and go to profile.
+   like a post. comment on a post.
+
+[backburner item]
+you can click on other members name and follow
+
+4.profile
+picture
+type of pet
+pets age
+
+
+5.indiv. mess
+	message info
+	likes and comments.
+
+
+
