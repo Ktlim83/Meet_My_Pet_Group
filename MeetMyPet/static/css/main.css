@@ -1,3 +1,9 @@
+* {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: large;
+    
+}
+
 #logo {
     height: 120px;
     width: 150px;
@@ -5,6 +11,72 @@
 }
 
 #main_nav {
-	background-color: #bbdacf !important;
+    background-color: #bbdacf !important;
 }
 
+.col {
+    height: fit-content;
+}
+
+#banner {
+    height: 50%;
+    width: 50%;
+    border-radius: 25%;
+    border: 5px solid pink;
+    opacity: 80%;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid pink;
+}
+
+h4 {
+    text-decoration-line: underline;
+}
+
+.category {
+    display: inline-block;
+
+}
+
+ul {
+    padding: 0px;
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 25%;
+    display: inline-block;
+    /* remove extra space below image */
+}
+
+.cat-image {
+    max-width: 50%;
+    max-height: 50%;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 25%;
+    border: 5px solid pink;
+
+}
+
+iframe {
+    
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    margin-left: 20px;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.bg {
+    background-color: rgb(247, 255, 211);
+}
+   
