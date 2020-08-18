@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>GameHub</title>
+</head>
+<body>
+    <div class="header">
+        <h1>GameHub</h1>
+    </div>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %} 
+    <section>
+        <h1>Welcome!</h1>
+        <p>Hello, and welcome to GameHub! This is the very first social media designed strictly for gamers! Please login or sign up to enjoy.</p>
+        <p>This site is built for people to discuss anything from their favorite game, mission, character, or design!</p>
+        <p>You can also connect with new friends and share gamertags to allow you to play together on some of your favorites!</p>
+    </section>
+    <section>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <button class="btn btn-primary">Log in</button>
+        </form>
+        <p>Don't have an Account? Click <a href="/register">here</a> to create one!</p>
+    </section>
+</body>
+</html>

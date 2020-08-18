@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- PLACE CONTENT INSIDE BLOCK -->
+{{curr_user.first_name}}
+
+{% for user in others %}
+{{user.first_name}}
+{% endfor %}
+
   {% endblock %}

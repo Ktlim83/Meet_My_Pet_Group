@@ -1,0 +1,9 @@
+Tasks:
+
+
+
+Keith: welcome page, navigation, github, back end
+
+Adam:Log in , message, back end
+
+Mark: profile page , individual message, back end
