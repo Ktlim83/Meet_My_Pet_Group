@@ -5,9 +5,11 @@ urlpatterns = [
     # HOME PAGE 
     path('', views.base, name='base'),
     # PROFILE PAGE RENDER 
-    path('profile/', views.profile, name='profile'),
+    path('profile/<int:id>', views.profile, name='profile'),
     # EDITS THE PROFILE INFO 
     path('edit_profile/<int:id>', views.edit_profile, name="edit_profile"),
+    
+    
     
     
     # MESSAGEBOARD PAGE RENDER 

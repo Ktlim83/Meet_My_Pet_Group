@@ -1,10 +1,146 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{curr_user.first_name}}
-
-{% for user in others %}
-{{user.first_name}}
-{% endfor %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<div class="container">
+  <div class="row my-2">
+      <div class="col-lg-8 order-lg-2">
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+              </li>
+              {% if request.session.user_id == user.id %}
+              <li class="nav-item">
+                  <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit Profile Info</a>
+              </li>
+              {% endif  %}
+          </ul>
+          <div class="tab-content py-4">
+              <div class="tab-pane active" id="profile">
+                  <div class="row">
+                    
+                      <div class="col-md-6">
+                          <p> Full Name: {{user.first_name}} {{user.last_name}} </p>
+                          <h6>E-mail: <a href="mailto:{{user.email}}">{{user.email}}</a> </h6>
+                          <h6>Pet Species: {{user.pet}} </h6>
+                          <h6>Pet age: {{user.pet_age}} </h6>
+                          <h6>Pet Temperament: {{user.pet_temperament}} </h6>
+                      </div>
+                      <div class="col-md-12">
+                          <h5 class="mt-2"> About me:
+                          </h5>
+                          
+                          <table class="table table-sm table-hover table-striped">
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          {%if user.bio   %}
+                                          {{user.bio}}
+                                          {% endif  %}
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          
+                          {% for message in messages %}
+                          {% if 'edit_not_approved' in message.extra_tags %}
+                          <ul>
+                              <li id="welcome" role="alert">{{ message }}</li>
+                          </ul>
+                          {% endif %}
+                          {% endfor %}
+                      </div>
+                  </div>
+                  <!--/row-->
+              </div>
+             
+              <div class=" tab-pane" id="edit">
+                  <form action="{% url 'edit_profile' curr_user.id %}" role="form" enctype="multipart/form-data"
+                      method="post">
+                      {% csrf_token %}
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">First
+                              name:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="first_name" id="first_name" type="text"
+                                  value="{{curr_user.first_name}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">Last
+                              name:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="last_name" id="last_name" type="text"
+                                  value="{{curr_user.last_name}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">Email:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="email" id="email" type="email"
+                                  value="{{curr_user.email}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">What kind of pet?:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="pet" id="pet" type="text"
+                                  value="{{curr_user.pet}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">How old is your pet?:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="pet_age" id="pet_age" type="text"
+                                  value="{{curr_user.pet_age}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">Pet Temperament:</label>
+                          <div class="col-lg-9">
+                            <select class="custom-select custom-select-sm" name="pet_temperament" id="pet_temperament" >
+                              <option selected>How would you describe your pet?</option>
+                              <option value="Easy-going">Easy-going</option>
+                              <option value="Agressive">Agressive</option>
+                              <option value="Shy">Shy</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">Profile Picture:</label>
+                          <div class="col-lg-9">
+                              <input class="form-control" name="picture" type="file">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label">About me:</label>
+                          <div class="col-lg-9">
+                              <textarea class="form-control" name="bio" id="bio" type="text" value="test"
+                                  rows="3">tell us something about yourself.....</textarea>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-lg-3 col-form-label form-control-label"></label>
+                          <div class="col-lg-9">
+                              <input type="reset" class="btn btn-secondary" value="Cancel">
+                              <input type="submit" class="btn btn-primary" value="Save Changes">
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <!-- PROFILE PICTURE  -->
+      <div class="col-lg-4 order-lg-1 text-center">
+          {%if user.profile_pic   %}
+          <img id="profile_pic" src="{{user.profile_pic}}" alt="me" style="width:100%">
+          {% else %}
+          <img id="profile_pic" src="/static/images/default.jpg" class="mx-auto img-fluid img-circle d-block"
+              alt="avatar">
+          {% endif  %}
+      </div>
+  </div>
+</div>
 
   {% endblock %}

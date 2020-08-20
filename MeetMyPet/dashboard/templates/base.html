@@ -28,10 +28,21 @@
           <a class="nav-link" href="{% url 'base' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          <div class="dropdown">
+            <a class="dropbtn nav-link">Members Area</a>
+            <div class="dropdown-content">
+              <a href="{% url 'profile' request.session.user_id %}">My Profile</a>
+              {% for users in others %}
+              <a href="{% url 'profile' users.id %}">{{users.first_name}} {{users.last_name}}</a>
+              {% endfor %}
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'messageboard' %}">Message Board</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Adopt</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{% url 'logout' %}">Log Out</a>

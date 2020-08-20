@@ -73,6 +73,12 @@ class UserManager(models.Manager):
         if len(form_data['pet']) < 1:
             errors['pet'] = 'pet field is required.'
             
+        if len(form_data['pet_age']) < 1:
+            errors['pet_age'] = 'Pet age field is required.'
+            
+        if len(form_data['pet_temperament']) < 1:
+            errors['pet_temperament'] = 'Pet temperament field is required.'
+            
         if len(form_data['bio']) < 1:
             errors['bio'] = 'Bio field is required.'
         
@@ -98,6 +104,8 @@ class User(models.Model):
     profile_pic = models.CharField(max_length=255, null=True)
     bio = models.CharField(max_length=255, null=True)
     pet = models.CharField(max_length=255, null=True)
+    pet_age = models.CharField(max_length=255, null=True)
+    pet_temperament = models.CharField(max_length=255, null=True)
     password = models.CharField(max_length=255)
     confirm = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
