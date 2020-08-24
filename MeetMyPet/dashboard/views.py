@@ -12,6 +12,14 @@ def base(request):
             "others" : User.objects.all(),
         }
     return render(request, "base.html", context) 
+
+# LOADS ADOPT PAGE 
+def adopt(request):
+    context = {
+            'curr_user': User.objects.get(id=request.session['user_id']),
+            "others" : User.objects.all(),
+        }
+    return render(request, "adopt.html", context) 
  
 #  LOADS PROFILE PAGE
 def profile(request, id):

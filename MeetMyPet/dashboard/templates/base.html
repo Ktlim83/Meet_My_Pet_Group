@@ -42,66 +42,70 @@
           <a class="nav-link" href="{% url 'messageboard' %}">Message Board</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Adopt</a>
+          <a class="nav-link" href="{% url 'adopt' %}">Adopt</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{% url 'logout' %}">Log Out</a>
         </li>
-
-  </nav>
+        <img src="/static/images/catsleep.png" alt="catsleep" style="float:right;width:50px;height:50px;">
+      </nav>
   <!-- end navbar  -->
   {% block content %}
   <div class="bg">
-  <div class="container">
-    <div class="row">
-      <div class="col mt-5">
-        <h2 class="header">Welcome to Meet My Pet!</h2>
-        <img id="banner" src="/static/images/dog3.jpg" alt="banner" style="width: 100%;">
-        <p class="header">Looking for a place to find the right buddy for your little buddy? then you have come to the
-          right place. We focus on matching your pet with other pets in the area, we also host meet and greets!</p>
-        <div class="category">
-          <h4>Hosted Group Meets:</h4>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae aspernatur enim temporibus laboriosam
-            vitae dolore dignissimos sit accusantium itaque consectetur. Sunt aliquid officia temporibus ipsum. Minima
-            expedita atque ea accusamus.</p>
+    <div class="container">
+      <div class="row">
+        <div class="col mt-5">
+          <h2 class="header">Welcome to Meet My Pet!</h2>
+          <img id="banner" src="/static/images/dog3.jpg" alt="banner" style="width: 100%;">
+          <p class="header">Looking for a place to find the right buddy for your little buddy? then you have come to the
+            right place. We focus on matching your pet with other pets in the area, we also host meet and greets!</p>
+          <div class="category">
+            <h4>Hosted Group Meets:</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae aspernatur enim temporibus laboriosam
+              vitae dolore dignissimos sit accusantium itaque consectetur. Sunt aliquid officia temporibus ipsum. Minima
+              expedita atque ea accusamus.</p>
+          </div>
+          <div class="category">
+            <h4>Meet Ups by:</h4>
+            <ul>
+              <li><i class="fa fa-paw" aria-hidden="true"></i> Breed</li>
+              <li><i class="fa fa-paw" aria-hidden="true"></i> Age</li>
+              <li><i class="fa fa-paw" aria-hidden="true"></i> Temperament</li>
+              <li><i class="fa fa-paw" aria-hidden="true"></i> Area</li>
+              <li><i class="fa fa-paw" aria-hidden="true"></i> Etc..</li>
+            </ul>
+          </div>
+          <div class="cat-image ml-4">
+            <img src="/static/images/cat1.jpg" alt="sub" style="width: 100%;">
+          </div>
         </div>
-        <div class="category">
-          <h4>Meet Ups by:</h4>
-          <ul>
-            <li><i class="fa fa-paw" aria-hidden="true"></i> Breed</li>
-            <li><i class="fa fa-paw" aria-hidden="true"></i> Age</li>
-            <li><i class="fa fa-paw" aria-hidden="true"></i> Temperament</li>
-            <li><i class="fa fa-paw" aria-hidden="true"></i> Area</li>
-            <li><i class="fa fa-paw" aria-hidden="true"></i> Etc..</li>
-          </ul>
+        <div class="col mt-4">
+          <h4>Pet Play times!</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore
+            eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus
+            laboriosam dolor vel ipsa?</p>
+          <div video-container>
+            <iframe width="420" height="315" src="https://youtube.com/embed/hUt_EZYCw3A?autoplay=1">
+            </iframe>
+            <h4>Pet Sitting Services!</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore
+              eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus
+              laboriosam dolor vel ipsa?</p>
+            <h4>Locals in your area!</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore
+              eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus
+              laboriosam dolor vel ipsa?</p><img class="map-image" src="/static/images/map.png" alt="map">
+          </div>
         </div>
-        <div class="cat-image ml-4">
-          <img src="/static/images/cat1.jpg" alt="sub" style="width: 100%;">
-        </div>
-      </div>
-      <div class="col mt-4">
-      <h4>Pet Play times!</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus laboriosam dolor vel ipsa?</p>
-      <div video-container>
-      <iframe width="420" height="315" src="https://youtube.com/embed/hUt_EZYCw3A?autoplay=1">
-      </iframe>
-      <h4>Pet Sitting Services!</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus laboriosam dolor vel ipsa?</p><h4>Locals in your area!</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam impedit sequi assumenda suscipit labore eveniet vitae reprehenderit quo adipisci, possimus nesciunt earum veniam alias blanditiis delectus laboriosam dolor vel ipsa?</p><img class="cat-image" src="/static/images/map.png" alt="map">
-    </div>
       </div>
     </div>
   </div>
-</div>
   {% endblock %}
   <!-- Footer -->
   <footer style="text-align: center;">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
     <p class="w3-medium"><a href="#" target="_blank" class="w3-hover-text-green">MeetMyPet 2020</a></p>
   </footer>
 </body>

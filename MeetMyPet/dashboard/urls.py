@@ -6,6 +6,8 @@ urlpatterns = [
     path('', views.base, name='base'),
     # PROFILE PAGE RENDER 
     path('profile/<int:id>', views.profile, name='profile'),
+    # ADOPT PAGE RENDER 
+    path('adopt/', views.adopt, name='adopt'),
     # EDITS THE PROFILE INFO 
     path('edit_profile/<int:id>', views.edit_profile, name="edit_profile"),
     
