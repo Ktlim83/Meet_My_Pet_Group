@@ -1,5 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- PLACE CONTENT INSIDE BLOCK -->
-  {% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/messageboard.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <title>Message Board</title>
+</head>
+<body>
+    <h1>Message Board</h1>
+    <section>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/woof/create" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" name="title" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="content">Content: </label>
+                <input type="text" name="content" id="content" class="form-control">
+            </div>
+            <button class="btn btn-primary">Post!</button>
+        </form>
+    </section>
+    <section>
+        {%for post in posts%}
+        <div class="post">
+            <h3>{{post.title}}</h3>
+            <blockquote>{{post.content}}</blockquote>
+            <p>{{post.author.first_name}} on {{post.created_at}}</p>
+            {% if post.author.id == request.session.user_id %}
+            <a class="btn btn-danger btn-sm" href="/woof/{{post.id}}/delete">Delete</a>
+            {% endif %}
+            <a class="btn btn-primary btn-sm" href="/woof/{{post.id}}/like">Like</a>
+            <p>{{ post.likes.count }} : Likes</p>
+        </div>
+        {%for comment in comments%}
+        <dir class="comment">
+            <blockquote>{{comment.content}}</blockquote>
+            <p>{{comment.author.first_name}} on {{comment.created_at}}</p>
+            {% if comment.author.id == request.session.user_id %}
+            <a class="btn btn-danger btn-sm" href="/woof/{{comment.id}}/deleteComm">Delete</a>
+            {% endif %}
+        </dir>
+        {% endfor %}
+        <form action="/woof/{{post.id}}/create_comm" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="content">Comment: </label>
+                <input type="text" name="content" id="content" class="form-control">
+            </div>
+            <button class="btn btn-primary">Comment!</button>
+        </form>
+        {% endfor %}
+    </section>
+</body>
+</html>
+{% endblock %}
