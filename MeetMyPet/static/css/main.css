@@ -99,6 +99,10 @@ iframe {
   .login_form {
       padding: 20px;
   }
+
+  .register_form {
+    padding: 20px;
+}
   
   .dropdown-content a:hover {background-color: #ddd;}
   

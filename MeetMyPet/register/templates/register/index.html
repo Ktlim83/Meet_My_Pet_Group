@@ -9,6 +9,10 @@
     <title>Register A New Account!!!!!</title>
 </head>
 <body>
+    <div class="header">
+        <img id="logo" src="/static/images/logo.png" alt="logo">
+    </div>
+    <br>
     <h1>Welcome! Please Register Your New Account Here.</h1>
     {% if messages %}
         <ul class="messages">    
@@ -17,7 +21,7 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <section>
+    <section class="register_form">
         <form action="/register/create" method="POST">
             {% csrf_token %}
             <div class="form-group">
