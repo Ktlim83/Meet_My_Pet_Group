@@ -14,7 +14,16 @@ urlpatterns = [
     
     # MESSAGEBOARD PAGE RENDER 
     path('messageboard/', views.messageboard, name='messageboard'),
-    
+    # CREATE A POST
+    path('create', views.createPost),
+    # DELETE A POST
+    path('<int:post_id>/delete', views.deletePost),
+    # LIKE A POST
+    path('<int:post_id>/like', views.likePost),
+    # CREATE A COMMENT
+    path('<int:post_id>/create_comm', views.createComm),
+    # DELETE A COMMENT
+    path('<int:comment_id>/deleteComm', views.deleteComm),
     
     
     # LOGS OUT THE USER 
