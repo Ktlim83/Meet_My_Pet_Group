@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/adopt.css' %}">
+<div class="container">
+    <header>
+     <img id="pet_banner" src="/static/images/petbanner.jpg" alt="petbanner" >
+     <h4>Contact these shelter for adoption.</h4>
+      </header>
+<table class="table mt-2">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Shelter</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Homeward Pet Adoption Center</td>
+        <td>13132 NE 177th Pl, Woodinville, WA 98072</td>
+        <td>(425) 488-4444</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Washington Ferret Rescue & Shelter</td>
+        <td>12514 128th Ln NE, Kirkland, WA 98034</td>
+        <td>(206) 442-2025</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Island Shelter</td>
+        <td>345 Knechtel Way NE, Bainbridge Island, WA 98110</td>
+        <td>(206) 855-8364</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Seattle Humane</td>
+        <td>13212 SE Eastgate Way, Bellevue, WA 98005</td>
+        <td>(425) 641-0080</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Island Shelter</td>
+        <td>345 Knechtel Way NE, Bainbridge Island, WA 98110</td>
+        <td>(206) 855-8364</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Paws Adoption Center</td>
+        <td>4688 Lynwood Center Rd NE, Bainbridge Island, WA 98110</td>
+        <td>(206) 842-2451</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Paws of Bremerton</td>
+        <td>Bremerton, WA 98310</td>
+        <td>(360) 373-7043</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  {% endblock %}
