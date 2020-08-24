@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 def base(request):
     context = {
             'curr_user': User.objects.get(id=request.session['user_id']),
-            "others" : User.objects.all(),
+            "others" : User.objects.exclude(id=request.session['user_id']),
         }
     return render(request, "base.html", context) 
 
@@ -29,7 +29,7 @@ def profile(request, id):
         context = {
             'curr_user': User.objects.get(id=request.session['user_id']),
             'user': User.objects.get(id=id),
-            "others" : User.objects.all(),
+            "others" : User.objects.exclude(id=request.session['user_id']),
         }
         return render(request, "profile.html", context)
     
