@@ -1,8 +1,8 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from .models import *
 from login.models import *
 from dashboard.models import *
 from django.contrib import messages
-from .models import *
 from django.core.files.storage import FileSystemStorage
 
 # LOADS BASE LANDING PAGE 
@@ -54,17 +54,49 @@ def edit_profile(request, id):
 
         return redirect(f'/woof/profile/{id}')
     
-
-    
-    
-    
-    
-
 #  LOADS MESSAGEBOARD PAGE
 def messageboard(request):
-    return render(request, "messageboard.html")  
+    context = {
+        'curr_user': User.objects.get(id=request.session['user_id']),
+        'posts' : Post.objects.all(),
+        'comments': Comment.objects.all(),
+    }
+    return render(request, "messageboard.html", context)  
 
+# CREATES A POST
+def createPost(request):
+    errors = Post.objects.validate(request.POST)
+    if errors:
+        for field, value in errors.items():
+            messages.error(request, value)
+        return redirect('/woof/messageboard')
+    new_post = Post.objects.create(title=request.POST['title'], content=request.POST['content'], author=User.objects.get(id=request.session['user_id']))
+    return redirect('/woof/messageboard')
 
+# DELETE A POST
+def deletePost(request, post_id):
+    to_delete = Post.objects.get(id=post_id)
+    if to_delete.author_id == request.session['user_id']:
+        to_delete.delete()
+    return redirect('/woof/messageboard')
+
+# LIKE A POST
+def likePost(request, post_id):
+    message = Post.objects.get(id=post_id)
+    message.likes.add(User.objects.get(id=request.session['user_id']))
+    return redirect('/woof/messageboard')
+
+# CREATE A COMMENT
+def createComm(request, post_id):
+    new_comm = Comment.objects.create(content=request.POST['content'], author=User.objects.get(id=request.session['user_id']), message=Post.objects.get(id=post_id))
+    return redirect('/woof/messageboard')
+
+# DELETE A COMMENT
+def deleteComm(request, comment_id):
+    to_delete = Comment.objects.get(id=comment_id)
+    if to_delete.author_id == request.session['user_id']:
+        to_delete.delete()
+    return redirect('/woof/messageboard')
 
 
 
