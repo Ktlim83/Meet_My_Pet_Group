@@ -19,7 +19,8 @@
             <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
         {% endfor %}
     </ul>
-    {% endif %} 
+    {% endif %}
+    <div class="container">
     <section>
         <h1>Welcome! Please Login to Meet My Pet</h1>
     </section>
@@ -38,5 +39,6 @@
         </form>
         <p>Don't have an Account? Click <a href="/register">here</a> to create one!</p>
     </section>
+</div>
 </body>
 </html>

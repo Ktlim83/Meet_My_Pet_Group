@@ -13,6 +13,7 @@
     <title>Message Board</title>
 </head>
 <body>
+    <div class="container">
     <h1>Message Board</h1>
     <section>
         {% if messages %}
@@ -40,7 +41,7 @@
         <div class="post">
             <h3>{{post.title}}</h3>
             <blockquote>{{post.content}}</blockquote>
-            <p>{{post.author.first_name}} on {{post.created_at}}</p>
+            <p><a href="/woof/profile/{{post.author.id}}">{{post.author.first_name}}</a> on {{post.created_at}}</p>
             {% if post.author.id == request.session.user_id %}
             <a class="btn btn-danger btn-sm" href="/woof/{{post.id}}/delete">Delete</a>
             {% endif %}
@@ -48,13 +49,13 @@
             <p>{{ post.likes.count }} : Likes</p>
         </div>
         {%for comment in comments%}
-        <dir class="comment">
+        <div class="comment">
             <blockquote>{{comment.content}}</blockquote>
-            <p>{{comment.author.first_name}} on {{comment.created_at}}</p>
+            <p><a href="/woof/profile/{{comment.author.id}}">{{comment.author.first_name}}</a> on {{comment.created_at}}</p>
             {% if comment.author.id == request.session.user_id %}
             <a class="btn btn-danger btn-sm" href="/woof/{{comment.id}}/deleteComm">Delete</a>
             {% endif %}
-        </dir>
+        </div>
         {% endfor %}
         <form action="/woof/{{post.id}}/create_comm" method="POST">
             {% csrf_token %}
@@ -66,6 +67,7 @@
         </form>
         {% endfor %}
     </section>
+</div>
 </body>
 </html>
 {% endblock %}

@@ -10,10 +10,6 @@ urlpatterns = [
     path('adopt/', views.adopt, name='adopt'),
     # EDITS THE PROFILE INFO 
     path('edit_profile/<int:id>', views.edit_profile, name="edit_profile"),
-    
-    
-    
-    
     # MESSAGEBOARD PAGE RENDER 
     path('messageboard/', views.messageboard, name='messageboard'),
     # CREATE A POST
@@ -26,8 +22,6 @@ urlpatterns = [
     path('<int:post_id>/create_comm', views.createComm),
     # DELETE A COMMENT
     path('<int:comment_id>/deleteComm', views.deleteComm),
-    
-    
     # LOGS OUT THE USER 
     path('logout/', views.logout, name='logout'),
     
