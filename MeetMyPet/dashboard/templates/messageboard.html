@@ -40,7 +40,7 @@
         <div class="post">
             <h3>{{post.title}}</h3>
             <blockquote>{{post.content}}</blockquote>
-            <p>{{post.author.first_name}} on {{post.created_at}}</p>
+            <p><a href="/woof/profile/{{post.author.id}}">{{post.author.first_name}}</a> on {{post.created_at}}</p>
             {% if post.author.id == request.session.user_id %}
             <a class="btn btn-danger btn-sm" href="/woof/{{post.id}}/delete">Delete</a>
             {% endif %}
@@ -50,7 +50,7 @@
         {%for comment in comments%}
         <dir class="comment">
             <blockquote>{{comment.content}}</blockquote>
-            <p>{{comment.author.first_name}} on {{comment.created_at}}</p>
+            <p><a href="/woof/profile/{{comment.author.id}}">{{comment.author.first_name}}</a> on {{comment.created_at}}</p>
             {% if comment.author.id == request.session.user_id %}
             <a class="btn btn-danger btn-sm" href="/woof/{{comment.id}}/deleteComm">Delete</a>
             {% endif %}
