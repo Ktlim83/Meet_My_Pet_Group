@@ -1,0 +1,14 @@
+.container{
+    padding: 20px;
+}
+
+.post_form{
+    width: 500px;
+    vertical-align: top;
+    display: inline-block;
+}
+.curr_form{
+    width: 580px;
+    padding-left: 100px;
+    display: inline-block;
+}
