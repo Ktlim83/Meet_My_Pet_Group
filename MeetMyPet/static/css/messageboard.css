@@ -1,0 +1,21 @@
+.container{
+    padding: 20px;
+}
+.row{
+    display: inline-block;
+}
+.col-6{
+    display: inline-block;
+    border: 2px solid pink;
+    height: fit-content;
+    
+}
+p{
+    font-size: 12px;
+}
+blockquote{
+    text-decoration: underline;
+}
+h3{
+    background-color: rgb(231, 216, 216);
+}
